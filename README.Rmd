@@ -1,0 +1,12 @@
+---
+title: "Test R Shiny time out on platform"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Purpose
+
+Experiment on timeouts on platform.
