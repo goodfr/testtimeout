@@ -10,7 +10,7 @@ COPY app.R /srv/shiny-server/app.R
 # include JS files
 COPY www /srv/shiny-server/www
 # to launch it and get the www file
-COPY run_app.R /srv/shiny-server/run_app.R
+# COPY run_app.R /srv/shiny-server/run_app.R
 
 # INSTALLATION DES PRERREQUIS
 RUN apt-get update && apt-get install -y  \
@@ -22,8 +22,8 @@ RUN rm /etc/nginx/sites-enabled/default
 
 # EXPOSITION DE PORT & LANCEMENT DE CONTENEUR 
 EXPOSE 80
-ADD entrypoint.sh /entrypoint.sh
-# chmod +x entrypoint.sh
-ADD init_shiny.sh /init_shiny.sh
-# chmod +x init_shiny.sh
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x entrypoint.sh
+COPY init_shiny.sh /init_shiny.sh
+RUN chmod +x init_shiny.sh
 ENTRYPOINT ["/entrypoint.sh"]
