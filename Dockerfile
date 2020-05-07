@@ -3,10 +3,11 @@ FROM rocker/shiny:3.6.0
 
 ## APP TEST ## 
 # Install R packages required by your Shiny app
-# RUN R -e 'install.packages(c("DT", "magrittr"), repos="http://cloud.r-project.org")'
+RUN R -e 'install.packages("shiny", repos="http://cloud.r-project.org")'
 
 # Copy your Shiny app to /srv/shiny-server/myapp
 COPY app.R /srv/shiny-server/app.R
+# shiny::runApp(appDir = "/srv/shiny-server/app.R", port = 3838, display.mode = "showcase")
 # include JS files
 COPY www /srv/shiny-server/www
 # to launch it and get the www file
